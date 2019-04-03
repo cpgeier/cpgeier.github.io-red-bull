@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <title>
+      
+      Car keyboard control - Red Bull Racing
+      
+		</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    
+    <link href="https://fonts.loli.net/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700" rel="stylesheet">
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/bigfoot/dist/bigfoot.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/bigfoot/dist/bigfoot-number.css" />
+    <script type="text/javascript">
+        $.bigfoot();
+    </script>
+    
+    
+</head>
+
+    <body class="post-template">
+        <header class="main-header">
+	<div class="main-header-content">
+		<h1 class="blog-title">
+			<a href="/">
+				
+           Red Bull Racing
+				
+			</a>
+		</h1>
+		<h2 class="blog-description">F1/10th scale racing team at UVA</h2>
+	</div>
+
+	<div class="nav">
+    
+		
+	</div>
+</header>
+
+        
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      
+      <h2 class="post-title">Car keyboard control</h2>
+      <section class="post-meta">
+        <time class="post-date">2019-04-03</time>
+      </section>
+    </header>
+    <section class="post-content">
+      
+
+<h2 id="demo">Demo:</h2>
+
+<p><a href="https://streamable.com/m3k5l">Steering control</a></p>
+
+<p><a href="https://streamable.com/xba2p">Throttle control</a></p>
+
+<h2 id="progress">Progress</h2>
+
+<p>Our team met on Sunday, 31 March 2019 to work on Assignment 3 - F1/10 Teleop. Following the directions in the assignment specifications and the lecture slides, we were successfully able to modify the provided <code>talker.py</code> and <code>keyboard.py</code> files to accept keyboard input and control the F1/10 vehicle.</p>
+
+<p>While modifying the <code>keyboard.py</code> file, we had to examine the <code>curses</code> python library to determine which key matched <code>curses.KEY_DC</code>. We found that this mapped the delete key on the keyboard. Additionally, we had to change the increment/decrement value to 0.3 instead of 0.1 to more easily see changes while debugging our code. The assignment specification document says that we must use 0.1, but does not provide a reason. We changed it back to 0.1 once we verified it was working.
+Writing the <code>talker.py</code> file was similar to the work we had done with turtlesim before as we only had to subscribe and publish to some topics. We followed the mapping formula in the assignment specifications to convert from [-100, 100] to pulse width modulation values of [6554, 13108]. We originally tested a formulation for this conversion using round(
+Additionally, we discovered that the Jetson board has a power button.</p>
+
+<h2 id="problems-we-ran-into">Problems we ran into:</h2>
+
+<p>The kill command for this project was one of the problems we initially ran into as we could not discover why. However, it turned out that the problem was due to the us not correctly sending the msg to set velocity and angle to 0.</p>
+
+<p>Turns out that the car requires the battery to be plugged in before the wheels would run even when code is fine.</p>
+
+<p>A technical issue we ran into was that sometimes files and directories would appear like they would simply vanish. This occurred suddenly sometimes when running:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">rosrun rosserial_python serial_node.py /dev/ttyACM0</code></pre></div>
+
+<p>This problem would not be fixed by rerunning roscore, re-sshing into the jetson, and restarting the VM that held ROS.
+It appears however that simply restarting the entire vehicle(replug everything, restarting onboard computer, ) would make it reappear.</p>
+
+    </section>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+</main>
+
+        <footer class="site-footer">
+  <section class="copyright">&copy; 2019 Red Bull Racing</section>
+</footer>
+
+
+
+    </body>
+</html>
