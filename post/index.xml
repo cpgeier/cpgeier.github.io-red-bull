@@ -5,10 +5,21 @@
     <link>https://example.org/post/</link>
     <description>Recent content in Posts on Red Bull Racing</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 03 Apr 2019 01:29:57 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 01:29:57 -0400</lastBuildDate>
     
 	<atom:link href="https://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Autonomous Wall Following</title>
+      <link>https://example.org/post/pid_control/</link>
+      <pubDate>Tue, 23 Apr 2019 01:29:57 -0400</pubDate>
+      
+      <guid>https://example.org/post/pid_control/</guid>
+      <description>Alex working hard on our difficult problem
+  Progress For this part of the course we were tasked with making the car autonomously follow the right wall. This involving implimenting perception and control into our F1/10th scale vehicle.
+To track the wall we utilized the LIDAR present on the car. By reading the sensor data using ROS we were able to impliment nodes to track the car distance from the wall at certain angles.</description>
+    </item>
     
     <item>
       <title>Car keyboard control</title>

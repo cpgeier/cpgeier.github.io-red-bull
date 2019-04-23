@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <title>
+      
+      Autonomous Wall Following - Red Bull Racing
+      
+		</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    
+    <link href="https://fonts.loli.net/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700" rel="stylesheet">
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/bigfoot/dist/bigfoot.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/bigfoot/dist/bigfoot-number.css" />
+    <script type="text/javascript">
+        $.bigfoot();
+    </script>
+    
+    
+</head>
+
+    <body class="post-template">
+        <header class="main-header">
+	<div class="main-header-content">
+		<h1 class="blog-title">
+			<a href="/">
+				
+           Red Bull Racing
+				
+			</a>
+		</h1>
+		<h2 class="blog-description">F1/10th scale racing team at UVA</h2>
+	</div>
+
+	<div class="nav">
+    
+		
+	</div>
+</header>
+
+        
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      
+      <h2 class="post-title">Autonomous Wall Following</h2>
+      <section class="post-meta">
+        <time class="post-date">2019-04-23</time>
+      </section>
+    </header>
+    <section class="post-content">
+      
+
+<figure>
+    <img src="/imgs/wow1.PNG"
+         alt="Alex working hard on our difficult problem"/> <figcaption>
+            <p>Alex working hard on our difficult problem</p>
+        </figcaption>
+</figure>
+
+
+<h1 id="progress">Progress</h1>
+
+<p>For this part of the course we were tasked with making the car autonomously follow the right wall. This involving implimenting perception and control into our F1/10th scale vehicle.</p>
+
+<p>To track the wall we utilized the LIDAR present on the car. By reading the sensor data using ROS we were able to impliment nodes to track the car distance from the wall at certain angles. In addition, we used PID control to adjust the car&rsquo;s angle to match the angle of the wall - which enabled the vehicle to follow one of the walls.</p>
+
+<h1 id="process">Process</h1>
+
+<ol>
+<li>Download the skeleton code from the github. Complete the skeleton code of the nodes: dist_finder.py and control.py</li>
+
+<li><p>Copy the select files to the Jetson TK1
+Updated messages (the messages on the homework assignment didn’t work initially):</p>
+
+<ul>
+<li><p>scp ~/github/f1tenth-course-labs/race/msg/pid_input.msg ubuntu@192.168.1.1:/home/ubuntu/catkinws/src/race/msg/</p></li>
+
+<li><p>scp ~/github/f1tenth-course-labs/race/src/dist_finder.py ubuntu@192.168.1.1:/home/ubuntu/catkinws/src/race/src/</p></li>
+
+<li><p>scp ~/github/f1tenth-course-labs/race/src/control.py ubuntu@192.168.1.1:/home/ubuntu/catkinws/src/race/src/</p></li>
+
+<li><p>scp ~/github/f1tenth-course-labs/race/src/keyboard_new.py ubuntu@192.168.1.1:/home/ubuntu/catkinws/src/race/src/</p></li>
+
+<li><p>scp ~/github/f1tenth-course-labs/race/src/talker_new.py ubuntu@192.168.1.1:/home/ubuntu/catkinws/src/race/src/</p></li>
+</ul></li>
+
+<li><p>Write the implementation for dist_finder.py</p>
+
+<ul>
+<li>getRange(data, angle): Computes the distance given the LiDAR data at the particular angle.</li>
+<li>callback(data): Computes these values and sends the message pid_input:</li>
+<li>alpha: orientation of the car with respect to the wall</li>
+<li>AB: The distance between the car and wall</li>
+<li>CD: The projected distance between the car and the wall</li>
+<li>Error: The difference between the desired trajectory and the projected distance CD</li>
+</ul></li>
+</ol>
+
+<h1 id="issues-we-ran-into">Issues we ran into</h1>
+
+<p>We spent a lot of time debugging parameters. The PID values need a lot of tuning to get right. Our main issue was that first we didn&rsquo;t have all of the math right in our program, however once we fixed math issues we ran into another problem. For some reason, the car wanted to stay around 1-2 meters away from the wall rather than following the wall more closely. Even modifying the desired_distance value in the python files had little impact.</p>
+
+    </section>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+</main>
+
+        <footer class="site-footer">
+  <section class="copyright">&copy; 2019 Red Bull Racing</section>
+</footer>
+
+
+
+    </body>
+</html>
